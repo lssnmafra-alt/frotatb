@@ -1,28 +1,38 @@
-# FrotaTB — Controle Interno de Frota
+# Controle de Frota Tracbel
 
 Aplicação interna para controle de frota usando React + Vite + TypeScript + Supabase.
 
 ## O que já tem
 
-- Painel simples da frota.
-- Cadastro de veículos com dono/locadora, placa, marca, modelo, ano, KM atual, próxima revisão e status.
-- Cadastro de condutores com CNH, categoria, vencimento e contato.
+- Dashboard visual com gráficos interativos.
+- Filtro por filial.
+- Filtro por status do veículo.
+- Busca por placa, modelo, categoria e condutor.
+- Tema claro e tema escuro.
+- Exportação para Excel `.xlsx`.
+- Cadastro de filiais.
+- Cadastro de veículos com filial, dono/locadora, placa, marca, modelo, ano, KM atual, próxima revisão e status.
+- Cadastro de condutores com filial, CNH, categoria, vencimento e contato.
 - Cadastro de donos, empresas ou locadoras.
 - Atualização de quilometragem/odômetro.
-- Registro de abastecimentos.
 - Registro de manutenções com status aberta, concluída ou cancelada.
 - Alertas de revisão por quilometragem.
-- Histórico recente de KM, abastecimentos e manutenções.
+- Histórico recente de KM e manutenções.
 - Dados salvos no Supabase.
+
+## Removido
+
+- A tela de abastecimento foi removida da interface.
 
 ## Configuração do Supabase
 
 1. Crie um projeto no Supabase.
 2. Abra o SQL Editor.
 3. Rode o arquivo `supabase/schema.sql`.
-4. Rode também `supabase/002_fix_vehicle_costs_view.sql` para garantir a view de custos atualizada.
-5. Copie a URL do projeto e a anon public key.
-6. Configure as variáveis na Vercel ou no `.env.local`.
+4. Rode `supabase/002_fix_vehicle_costs_view.sql`.
+5. Rode `supabase/003_filiais_design.sql`.
+6. Copie a URL do projeto e a anon public key.
+7. Configure as variáveis na Vercel ou no `.env.local`.
 
 ```bash
 VITE_SUPABASE_URL=https://seu-projeto.supabase.co
@@ -53,4 +63,5 @@ Este projeto está configurado para uso interno simples, sem login e sem SaaS. A
 - TypeScript
 - Vite
 - Supabase
+- XLSX
 - CSS puro
