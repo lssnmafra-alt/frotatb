@@ -1,19 +1,33 @@
-# FrotaTB — Controle de Frota
+# FrotaTB — Controle Interno de Frota
 
-App inicial para controle de frota criado em React + Vite + TypeScript.
+Aplicação interna para controle de frota usando React + Vite + TypeScript + Supabase.
 
 ## O que já tem
 
-- Painel com resumo da frota.
-- Cadastro de veículos.
-- Cadastro de motoristas.
+- Painel simples da frota.
+- Cadastro de veículos com dono/locadora, placa, marca, modelo, ano, KM atual, próxima revisão e status.
+- Cadastro de condutores com CNH, categoria, vencimento e contato.
+- Cadastro de donos, empresas ou locadoras.
+- Atualização de quilometragem/odômetro.
 - Registro de abastecimentos.
-- Registro de manutenções.
-- Alertas de próxima revisão por quilometragem.
-- Custo total por veículo.
-- Histórico de lançamentos recentes.
-- Backup em JSON.
-- Dados salvos no navegador com `localStorage`.
+- Registro de manutenções com status aberta, concluída ou cancelada.
+- Alertas de revisão por quilometragem.
+- Histórico recente de KM, abastecimentos e manutenções.
+- Dados salvos no Supabase.
+
+## Configuração do Supabase
+
+1. Crie um projeto no Supabase.
+2. Abra o SQL Editor.
+3. Rode o arquivo `supabase/schema.sql`.
+4. Rode também `supabase/002_fix_vehicle_costs_view.sql` para garantir a view de custos atualizada.
+5. Copie a URL do projeto e a anon public key.
+6. Configure as variáveis na Vercel ou no `.env.local`.
+
+```bash
+VITE_SUPABASE_URL=https://seu-projeto.supabase.co
+VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
+```
 
 ## Como rodar localmente
 
@@ -22,8 +36,6 @@ npm install
 npm run dev
 ```
 
-Depois abra o endereço exibido pelo Vite no navegador.
-
 ## Como gerar build
 
 ```bash
@@ -31,20 +43,14 @@ npm run build
 npm run preview
 ```
 
-## Próximo passo recomendado
+## Observação importante
 
-A versão atual funciona sem banco para validar a ideia. Para virar sistema real de equipe, o próximo passo é adicionar:
-
-1. Login de usuários.
-2. Banco de dados Supabase.
-3. Tabelas de veículos, motoristas, abastecimentos e manutenções.
-4. Controle de permissões por empresa.
-5. Upload de documentos, fotos e comprovantes.
-6. Relatórios por mês, por veículo e por motorista.
+Este projeto está configurado para uso interno simples, sem login e sem SaaS. A anon key do Supabase fica no frontend. Se o link for público ou se houver dados sensíveis, o ideal é adicionar autenticação e Row Level Security antes de usar em produção aberta.
 
 ## Stack
 
 - React
 - TypeScript
 - Vite
+- Supabase
 - CSS puro
