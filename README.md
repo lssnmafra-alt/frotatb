@@ -31,12 +31,27 @@ Aplicação interna para controle de frota usando React + Vite + TypeScript + Su
 3. Rode o arquivo `supabase/schema.sql`.
 4. Rode `supabase/002_fix_vehicle_costs_view.sql`.
 5. Rode `supabase/003_filiais_design.sql`.
-6. Copie a URL do projeto e a anon public key.
-7. Configure as variáveis na Vercel ou no `.env.local`.
+6. Rode `supabase/004_liberar_rls_uso_interno.sql` se aparecer erro de Row Level Security.
+7. Copie a URL do projeto e a anon public key.
+8. Configure as variáveis na Vercel ou no `.env.local`.
 
 ```bash
 VITE_SUPABASE_URL=https://seu-projeto.supabase.co
 VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
+```
+
+## Corrigir erro de RLS
+
+Se aparecer a mensagem abaixo ao cadastrar filial, veículo, condutor ou manutenção:
+
+```txt
+new row violates row-level security policy
+```
+
+Rode este arquivo no Supabase SQL Editor:
+
+```sql
+supabase/004_liberar_rls_uso_interno.sql
 ```
 
 ## Como rodar localmente
